@@ -18,7 +18,7 @@
 		<div class="column w-full" id="column-ef1gq">
 			<div class="primo-component" id="component-51joo">
 				<div id="component-51joo" class="w-full"><div 
-     class="h-screen bg-gray-900 text-gray-100 p-4 lg:p-8" 
+     class="bg-gray-900 text-gray-100 py-8 mb-8" 
      x-data="gistsData()"  
      x-init="init()"
 >
@@ -42,8 +42,8 @@
             <span x-text="gist.value" class="text-5xl"></span>
           </li>
         </template>
-          <li class="bg-gray-800 p-4 text-xl font-bold rounded shadow flex flex-col">
-            <button @click="addItem()" class="bg-blue-900 hover:bg-opacity-75 rounded h-full text-sm font-semibold transition-colors duration-100">+ new</button>
+          <li class="bg-gray-800 text-xl font-bold rounded shadow flex flex-col hover:bg-gray-700 transition-colors duration-100">
+            <button @click="addItem()" class="text-gray-200 h-full text-sm font-semibold transition-colors duration-100">+ new</button>
           </li>
       </ul>
     </div>
@@ -106,6 +106,15 @@ window.gistsData = function() {
   };
 } 
     </script>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="section-cpepv">
+	<div class="columns flex flex-wrap container">
+		<div class="column w-full" id="column-upxwf">
+			<div class="primo-copy" id="copy-zzt1v">
+				<h2>Current Functionality </h2><ul><li><p>Retrieve and display documents from a collection called ‘mateo’</p></li><li><p>Create and save new values using `window.prompt()`</p><p><br></p></li></ul><h2>MVP should probably have</h2><h3>A standard api for retrieving and modifying data (guessing a cloud function should work it). </h3><p><strong>i.e. To access all objects: </strong><em>GET or POST https://lildb.com/xxxxx</em></p><p><strong>To access individual object:</strong><em><strong> </strong>GET or POST https://lildb.com/xxxxx/object-id</em></p><p>Other things? </p><h3><br></h3><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p>
 			</div>
 		</div>
 	</div>
