@@ -1,0 +1,120 @@
+
+    <!doctype html>
+
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="./styles.css" />
+      <link rel="stylesheet" type="text/css" href="./databases.css" />
+      <script src="./databases.js"></script>
+      
+       
+    </head>
+
+    <body data-instant-intensity="all" class="primo-page">   
+      <div id="section-ayoib">
+	<div class="columns flex flex-wrap ">
+		<div class="column w-full" id="column-ef1gq">
+			<div class="primo-component" id="component-51joo">
+				<div id="component-51joo" class="w-full"><div 
+     class="h-screen bg-gray-900 text-gray-100 p-4 lg:p-8" 
+     x-data="gistsData()"  
+     x-init="init()"
+>
+    <div class="container">
+      <header class="flex items-center mb-3">
+       <h1 class="font-bold flex-grow">lildb</h1>
+        <button
+           class="py-2 px-4 rounded bg-blue-900 flex-grow-0"
+           type="button"
+           x-on:click="reload()"
+        >
+         Reload
+        </button>   
+      </header>
+
+      <ul class="grid grid-cols-4 lg:grid-cols-8 gap-3">
+        <template x-for="gist in gists" :key="gist.label">
+          <li class="bg-gray-800 p-4 text-xl font-bold rounded shadow flex flex-col">
+            <span x-text="gist.label"></span>
+            <span x-text="gist.type" class="text-xs font-medium mb-2"></span>
+            <span x-text="gist.value" class="text-5xl"></span>
+          </li>
+        </template>
+          <li class="bg-gray-800 p-4 text-xl font-bold rounded shadow flex flex-col">
+            <button @click="addItem()" class="bg-blue-900 hover:bg-opacity-75 rounded h-full text-sm font-semibold transition-colors duration-100">+ new</button>
+          </li>
+      </ul>
+    </div>
+</div>
+</div>
+				<script type="module">
+      const primo = {
+        id: '51joo',
+        data: {"id":"51joo"},
+        fields: []
+      }
+      // turn [import _ from 'lodash'] into [import _ from 'https://cdn.skypack.dev/lodash'];
+      import firebase from 'https://cdn.skypack.dev/firebase/app'
+import firestore from 'https://cdn.skypack.dev/firebase/firestore'
+import AlpineJS from 'https://cdn.skypack.dev/alpinejs'
+
+var firebaseConfig = {
+    apiKey: "AIzaSyCD8_bwMiQBhoUqgOyrcBYEF39AjtdLcK4",
+    authDomain: "lildb-8ff35.firebaseapp.com",
+    projectId: "lildb-8ff35",
+    storageBucket: "lildb-8ff35.appspot.com",
+    messagingSenderId: "558432690545",
+    appId: "1:558432690545:web:88767bbd60e400557b16d0"
+};
+
+if (firebase.apps.length === 0) {
+	firebase.initializeApp(firebaseConfig);
+}
+var db = firebase.firestore();
+
+var docRef = db.collection("mateo")
+    
+
+window.gistsData = function() {
+  return {
+    gists: [],
+    addItem: async function() {
+    	console.log('yes')
+        const label = prompt('Enter a label')
+        const value = prompt('Enter a value')
+        await docRef.add({ label, value })
+      	this.init();
+    },
+    reload() {
+      sessionStorage.removeItem("gists");
+      this.gists = [];
+      this.init();
+    },
+    init() {
+        docRef.get().then(res => {
+            const data = res.docs.map(d =>({ 
+            	id: d.id, // include id for templating
+                ...d.data() 
+            }))
+            console.log(data)
+            this.gists = data
+        })
+        return
+    }
+  };
+} 
+    </script>
+			</div>
+		</div>
+	</div>
+</div>
+
+      
+      
+      <script type="module" src="https://cdn.skypack.dev/twind/shim"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.js" integrity="sha256-DdSiNPR71ROAVMqT6NiHagLAtZv9EHeByYuVxygZM5g=" crossorigin="anonymous"></script>
+    </body>
+    </html>
+  
